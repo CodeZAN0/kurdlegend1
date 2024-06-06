@@ -1,0 +1,540 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/variables";
+:root {
+  --primary: #eeeeee;
+  --secondary: #227c70;
+  --green: #82cd47;
+  --secondary-light: rgba(34, 124, 112, 0.2);
+  --secondary-light-2: rgba(127, 183, 126, 0.1);
+  --white: #fff;
+  --black: #393e46;
+  --shadow: 0px 2px 8px 0px var(--secondary-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  height: 100vh;
+  width: 100%;
+  background-color: #222222;
+  font-family: 'Arial, sans-serif';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+a:hover {
+  background-color: darkgrey;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  background-color: black !important;
+  padding: 0 8%;
+  box-shadow: var(--shadow);
+}
+
+.navbar-brand {
+  color: #17a2b8 !important;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 2rem;
+}
+
+.navbar-list li {
+  margin: 0 1rem;
+}
+
+.navbar-list li a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+}
+
+.profile-dropdown {
+  position: relative;
+  width: fit-content;
+}
+
+.profile-dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 150px;
+  border-radius: 50px;
+  color: var(--white);
+  cursor: pointer;
+  border: 2px solid var(--secondary);
+  transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in, border 0.3s;
+}
+
+.profile-dropdown-btn:hover {
+  background-color: var(--secondary-light-2);
+  box-shadow: var(--shadow);
+}
+
+.profile-img {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.profile-img i {
+  position: absolute;
+  right: 0;
+  bottom: 0.3rem;
+  font-size: 0.5rem;
+  color: var(--green);
+}
+
+.profile-dropdown-btn span {
+  margin: 0 0.5rem;
+  margin-right: 0;
+}
+
+.profile-dropdown-list {
+  position: absolute;
+  top: 68px;
+  width: 220px;
+  right: 0;
+  background-color: var(--white);
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: max-height 0.5s;
+}
+
+.profile-dropdown-list hr {
+  border: 0.5px solid var(--green);
+}
+
+.profile-dropdown-list.active {
+  max-height: 500px;
+}
+
+.profile-dropdown-list-item {
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  transition: background-color 0.2s ease-in, padding-left 0.2s;
+}
+
+.profile-dropdown-list-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.profile-dropdown-list-item a i {
+  margin-right: 0.8rem;
+  font-size: 1.1rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  background-color: var(--secondary);
+  color: var(--white);
+  line-height: 2.3rem;
+  text-align: center;
+  margin-right: 1rem;
+  border-radius: 50%;
+  transition: margin-right 0.3s;
+}
+
+.profile-dropdown-list-item:hover {
+  padding-left: 1.5rem;
+  background-color: var(--secondary-light);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-list {
+    flex-direction: column;
+    width: 100vw;
+    text-align: left;
+    padding-right: 0;
+  }
+  .navbar-list li {
+    margin: 0.5rem 0;
+  }
+  .profile-dropdown-btn {
+    width: 100%;
+    justify-content: start;
+  }
+
+    .profile-img{height: 45px; width :45px;
+        margin: 10px;
+        justify-content: flex-start;}
+    .profile-dropdown-list {
+        width: 100vw; /* Set the width to 100% of the viewport width */
+        box-sizing: border-box; /* Ensure padding and border are included in the width */
+        margin-left: 40px;
+    }
+    .profile-dropdown {
+        width: 80%; /* Set the width to 100% of the viewport width */
+        padding: 10px;
+    }
+}
+
+
+@media (min-width: 900px) {
+    .profile-dropdown-list {
+  
+        box-sizing: border-box;
+
+    }
+    .profile-dropdown {
+        width: 80%; /* Set the width to 100% of the viewport width */
+    }
+    .profile-dropdown-btn{
+        width: 100%;
+        padding: 10px;
+    }
+    .profile-dropdown-btn span {
+    margin: 0 0.5rem;
+    margin-right: 50%;
+}
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: auto;
+  }
+  .profile-dropdown-btn {
+    font-size: 0.8rem;
+    width: 100%;
+  }
+  
+    .profile-dropdown-list {
+        width: 100%; /* Set the width to 100% of the viewport width */
+        box-sizing: border-box; /* Ensure padding and border are included in the width */
+    }
+    .profile-dropdown {
+        width: 100%; /* Set the width to 100% of the viewport width */
+    }
+}
+
+
+/* Existing CSS up to 768px */
+@media (min-width: 990px)and   (max-width: 1330px){
+  .navbar-list {
+    padding-right: 1rem; /* Adjust padding to make space */
+  }
+  #anav{font-size: 14px;
+    margin: 5px}
+  .logo-b{display: None;}
+}
+
+@media (max-width: 390px) {
+  .navbar-brand {
+    width: auto; /* Adjust width of navbar brand to fit content */
+    margin-right: 10px; /* Add margin between navbar brand and dropdown button */
+  }
+  .profile-dropdown-btn {
+    width: auto; /* Adjust width of profile dropdown button to fit content */
+    margin-left: 10px; /* Add margin between navbar brand and dropdown button */
+  }
+
+}
+
+
+#logonav{background:rgba(46, 119, 255, 1);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-family: bold;
+font-size: 25px;
+}
+
+
+
+
+
+}
+
+header, footer {
+    background-color: #222;
+    color: #fff;
+
+}
+
+
+/* Intro section */
+.intro {
+    text-align: center;
+    padding: 70px 30px;
+    color: #fff;
+     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;}
+
+.intro button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #00f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+}
+
+.intro button:hover {
+    background-color: #0056b3;
+}
+
+/* Achievements section */
+.achievements {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.work {
+    flex: 1 1 300px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #222222;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.work i {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.work-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #222;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    border-radius: 23px 23px 0px 0px; 
+
+}
+
+.footer-col {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+.footer-col h3 {
+    margin-bottom: 10px;
+}
+
+.footer-col li {
+    list-style: none;
+    margin-bottom: 5px;
+    color: whitesmoke;
+}
+
+.social-icons i {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .achievements, footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .work, .footer-col {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .nav-link, .profile-dropdown-btn span {
+        font-size: 14px;
+    }
+
+    .intro {
+        padding: 20px;
+    }
+    #weblogo{
+    width: 200px;
+    height: 200px;
+    
+    #info-web{
+border-radius: 10px;}
+
+}
+}
+@media (max-width: 380px) {
+    
+    #weblogo{
+    width: 150px;
+    height: 150px;}
+}
+
+
+
+
+
+/* Pre-footer Styling */
+.pre-footer {
+   
+    padding: 40px 0;
+    border-top: 2px solid #e9ecef;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+margin-top: 20px;}
+
+.pre-footer .container {
+    max-width: 60%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.pre-footer-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+}
+
+.pre-footer-text {
+    font-size: 10px;
+    margin-bottom: 30px;
+
+}
+#problem-input{height: 150px}
+.newsletter-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.newsletter-form input[type="email"],
+.newsletter-form .problem-input {
+    padding: 20px 20px;
+    font-size: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    outline: none;
+    word-wrap: break-word;
+  overflow-wrap: break-word; /* for non-IE browsers */
+}
+
+.from-control {
+       min-height: calc(12em + .75rem + calc(var(--bs-border-width)* 2));}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background-color: #0056b3;
+}
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-link {
+    margin: 0 10px;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .newsletter-form input[type="email"],
+    .newsletter-form .problem-input,
+    .newsletter-form button {
+        width: 100%;
+        margin: 5px 0;
+        border-radius: 4px;
+    }
+    #weblogo {
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+    }
+}
+    #weblogo {
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+    }
+
+    #info-web {
+        background-color: #222222;
+        border-radius: 15px;
+        margin: 15px;
+    }
+
+
+
+
+/* Light Mode */
+.light-mode {
+    background-color: whitesmoke; /* Specify light background color */
+    color: black; /* Specify light text color */
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: black; /* Specify dark background color */
+    color: white; /* Specify dark text color */
+}
+    

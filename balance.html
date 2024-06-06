@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods - Your Company Name</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+    <style type="text/css">body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: #333;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.tablink {
+    background-color: #ddd;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tablink:hover {
+    background-color: #ccc;
+}
+
+.tablink.active {
+    background-color: #bbb;
+}
+
+.tabcontent {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.bank-details p {
+    margin: 0.5em 0;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Methods</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'credit-card')">Credit/Debit Cards</button>
+            <button class="tablink" onclick="openTab(event, 'paypal')">PayPal</button>
+            <button class="tablink" onclick="openTab(event, 'bank-transfer')">Bank Transfer</button>
+            <button class="tablink" onclick="openTab(event, 'digital-wallets')">Digital Wallets</button>
+            <button class="tablink" onclick="openTab(event, 'cryptocurrency')">Cryptocurrency</button>
+            <button class="tablink" onclick="openTab(event, 'buy-now-pay-later')">Buy Now, Pay Later</button>
+        </div>
+
+        <div id="credit-card" class="tabcontent">
+            <h2>Credit/Debit Cards</h2>
+            <form id="credit-card-form">
+                <div class="form-group">
+                    <label for="card-name">Cardholder Name</label>
+                    <input type="text" id="card-name" name="cardName" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="cardNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <div class="form-group">
+                    <label for="billing-address">Billing Address</label>
+                    <input type="text" id="billing-address" name="billingAddress" required>
+                </div>
+                <button type="submit">Submit Payment</button>
+            </form>
+        </div>
+
+        <div id="paypal" class="tabcontent">
+            <h2>PayPal</h2>
+            <p>Pay securely using your PayPal account.</p>
+            <button onclick="payWithPayPal()">Pay with PayPal</button>
+        </div>
+
+        <div id="bank-transfer" class="tabcontent">
+            <h2>Bank Transfer</h2>
+            <p>Transfer funds directly from your bank account.</p>
+            <div class="bank-details">
+                <p><strong>Bank Name:</strong> [Bank Name]</p>
+                <p><strong>Account Number:</strong> [Account Number]</p>
+                <p><strong>Account Name:</strong> [Account Name]</p>
+                <p><strong>SWIFT/BIC:</strong> [SWIFT/BIC]</p>
+                <p><strong>IBAN:</strong> [IBAN]</p>
+            </div>
+        </div>
+
+        <div id="digital-wallets" class="tabcontent">
+            <h2>Digital Wallets</h2>
+            <p>We support Apple Pay and Google Pay.</p>
+            <button onclick="payWithApplePay()">Pay with Apple Pay</button>
+            <button onclick="payWithGooglePay()">Pay with Google Pay</button>
+        </div>
+
+        <div id="cryptocurrency" class="tabcontent">
+            <h2>Cryptocurrency</h2>
+            <p>We accept Bitcoin, Ethereum, and Litecoin.</p>
+            <form id="crypto-form">
+                <div class="form-group">
+                    <label for="crypto-type">Select Cryptocurrency</label>
+                    <select id="crypto-type" name="cryptoType" required>
+                        <option value="bitcoin">Bitcoin (BTC)</option>
+                        <option value="ethereum">Ethereum (ETH)</option>
+                        <option value="litecoin">Litecoin (LTC)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="crypto-amount">Amount</label>
+                    <input type="text" id="crypto-amount" name="cryptoAmount" required>
+                </div>
+                <button type="submit">Submit Payment</button>
+            </form>
+        </div>
+
+        <div id="buy-now-pay-later" class="tabcontent">
+            <h2>Buy Now, Pay Later</h2>
+            <p>We offer buy now, pay later options through [BNPL Provider Name].</p>
+            <button onclick="payWithBNPL()">Pay with [BNPL Provider Name]</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tablink').forEach(button => {
+        button.addEventListener('click', event => {
+            openTab(event, button.textContent.toLowerCase().replace(/ /g, '-'));
+        });
+    });
+
+    document.getElementById('credit-card-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const cardName = document.getElementById('card-name').value;
+        const cardNumber = document.getElementById('card-number').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+        const cvv = document.getElementById('cvv').value;
+        const billingAddress = document.getElementById('billing-address').value;
+
+        if (!validateCardNumber(cardNumber)) {
+            alert('Invalid card number');
+            return;
+        }
+
+        if (!validateExpiryDate(expiryDate)) {
+            alert('Invalid expiry date');
+            return;
+        }
+
+        if (!validateCVV(cvv)) {
+            alert('Invalid CVV');
+            return;
+        }
+
+        alert('Payment successful!');
+    });
+
+    document.getElementById('crypto-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const cryptoType = document.getElementById('crypto-type').value;
+        const cryptoAmount = document.getElementById('crypto-amount').value;
+
+        alert(`Payment of ${cryptoAmount} ${cryptoType.toUpperCase()} successful!`);
+    });
+});
+
+function openTab(event, tabName) {
+    document.querySelectorAll('.tabcontent').forEach(content => {
+        content.classList.remove('active');
+    });
+
+    document.querySelectorAll('.tablink').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    document.getElementById(tabName).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+function validateCardNumber(cardNumber) {
+    const regex = /^\d{16}$/;
+    return regex.test(cardNumber);
+}
+
+function validateExpiryDate(expiryDate) {
+    const regex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    return regex.test(expiryDate);
+}
+
+function validateCVV(cvv) {
+    const regex = /^\d{3,4}$/;
+    return regex.test(cvv);
+}
+
+function payWithPayPal() {
+    alert('Redirecting to PayPal...');
+}
+
+function payWithApplePay() {
+    alert('Initiating Apple Pay...');
+}
+
+function payWithGooglePay() {
+    alert('Initiating Google Pay...');
+}
+
+function payWithBNPL() {
+    alert('Redirecting to Buy Now, Pay Later provider...');
+}
+</script>
+</body>
+</html>
